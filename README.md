@@ -1,6 +1,8 @@
 # cnn-phys-reproducibility
 
-This repository is the supplementary material of the article **"On the reproducibility of fully convolutional neural networks for modeling time-space evolving physical systems"**, Gonçalves Pinto et al. 2021 (doi to be added). It contains the complete description of the neural network and of the computing environement, used code, and samples of hidden layers and the estimated fields.
+This repository is the supplementary material of the article **"On the reproducibility of fully convolutional neural networks for modeling time-space evolving physical systems"**, Gonçalves Pinto et al. 2021 (doi to be added). 
+
+It contains the complete description of the neural network and of the computing environement, used code, and samples of hidden layers and the estimated fields.
 
 Abstract:
 
