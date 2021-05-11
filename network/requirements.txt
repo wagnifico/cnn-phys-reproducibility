@@ -1,0 +1,8 @@
+torch
+torchvision
+pytorch-lightning
+vtk
+matplotlib
+numpy
+Pillow
+PyYAML

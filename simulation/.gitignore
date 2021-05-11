@@ -1,0 +1,6 @@
+# ignoring files and folders used for the compilation
+# get palabos from their website
+acoustic_pulse
+/build/
+/palabos-v2.2.1/
+/palabos/

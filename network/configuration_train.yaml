@@ -1,0 +1,115 @@
+# Sample of a configuration file.
+# Some parameters can be modified through the command line.
+# See help function for train.py script and README.md for more info.
+
+#========================================================================
+#                                  DATA                                  
+#========================================================================
+# path to the folder with the raw database (simulation data) for training
+dataPathRaw: '/path/to/raw/data'
+# path to the folder with preprocessed database
+dataPath: '/path/to/preprocessed/data'
+# format of the raw (simulation) data filenames
+formatVTK: '{:06d}/vtk{:06d}.vti'
+# format of the preprocessed data filenames
+formatPT: 'scene{:06d}_group{:05d}.pt'
+#formatPT: '{:06d}/pt{:06d}.pt'
+# interval between solution steps (must be a multiple of the recorded values)
+frameStep: 3
+# number of parallel workers for dataloader (if 0, selected by pytorch)
+numWorkers: 5
+
+#========================================================================
+#                                 OUTPUT                                 
+#========================================================================
+# output folder for trained model and loss log
+modelDir: '/path/to/model/'
+# experiment version
+version: 
+# trained model name
+modelFilename: 'convModel'  
+
+#========================================================================
+#                          TRAINING PARAMETERS                           
+#========================================================================
+# resume training from checkpoint
+resumeTraining: false
+# maximum number of epochs
+maxEpochs: 2
+# batch size
+batchSize: 32
+# maximum number of datapoints (if 0, all available data is used)
+maxDatapoints: 0
+# method to pick groups of frames from scene ('first', 'last' or 'random')
+selectMode: 'first'
+
+# shuffleTraining - shuffles dataset
+shuffleTraining: true
+# flipData: perform random flip of data (data augmentation) - in preprocessing!
+flipData: true
+ 
+# optimizer options 
+optimizer: #Adam#
+    # override optimizer when resuming training
+    overrideAtResume: true
+    # learning rate. Options: float or 'auto' to execute LRFinder
+    lr: 1.0e-4
+    weight_decay: 0.0
+
+# scheduler: optimizer scheduler options
+scheduler:
+    type: 'reduceLROnPlateau'
+    #  override scheduler when resuming training
+    overrideAtResume: true
+    # Reduce LR On Plateau
+    reduceLROnPlateau:
+        mode: 'min'
+        factor: 0.98
+        patience: 10
+        threshold: 1.0e-4
+        threshold_mode: 'rel'
+        cooldown: 10 
+        min_lr: 1.0e-6
+        eps: 1.0e-8
+        verbose: true
+
+#========================================================================
+#                              MODEL PARAM                               
+#========================================================================
+modelParam:
+    # model: ScaleNet (a multiscale architecture found in
+    #        pulsenetlib/neuralnet2d.py)
+    model: 'ScaleNet'
+    numInputFrames: 4
+    numOutputFrames: 1
+    
+    # name of the quantities to consider from preprocessing to training
+    channels: ['density']
+    
+    #------------------------- Data Preparation -------------------------
+    # operations to be performed per channel, as sorted by 'channels'.    
+    # scalar to add to the complete field
+    scalarAdd: [-1.0]    
+    # weighting for the division by the std of the first frame
+    stdNorm: [1.0]    
+    # weighting of the average component removal
+    avgRemove: [0.0]
+    
+    #---------------------------- Loss Terms ----------------------------
+    # fooLambda: weighting for each loss terms (set to 0 to disable).
+    # MSE of channels
+    L2Lambda: 1.00
+    # MSE of gradient of channels
+    GDL2Lambda: 0.00
+
+#========================================================================
+#                          TRAINING MONITORING                           
+#========================================================================
+# freqToFile: epoch frequency for loss output to file saving.
+freqToFile: 20
+# saveTopK: save k best validation loss models during training. 
+# list of best models is written into a yaml file in modelDir/version/checkpoints
+# set to -1 to save all models
+saveTopK: 1
+# np (numpy, saving losses in numpy format) or tb (tensorboard logger)
+logger: 'np'

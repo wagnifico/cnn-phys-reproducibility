@@ -1,0 +1,43 @@
+# Sample of testing parameters file.
+#
+# It produces plots and numpy *.npy files with the evolution
+# of the error of tested models
+#
+# Some parameters can be modified through the command line
+# See help function for test.py script and README.md for more info
+
+#======================================================================
+#                                 DATA
+#======================================================================
+# Path to model folder, where the trained weigths are stored. 
+# Test data will be saved on 'results' subfolder
+model_path: '/path/to/model/'
+# path to the reference solutions (must consider a format for the
+# multiple scenes)
+reference_path: '/path/to/reference/{:06d}'
+# format of the reference simulation files
+file_format: 'vtk{:06d}.vti'
+# name of the test to be performed, added to the generated files
+comparison_name: 'test'
+
+#======================================================================
+#                             TEST PARAMETERS
+#======================================================================
+# Name of tester and comparator classes, defining with type of test
+# and which type of comparisons are performed.
+# Check test.py and pulsenetlib/tester.py for more information.
+# If empty, default is selected
+tester:
+comparator:
+
+# frame step jump (in number of timesteps)
+frame_step: 3
+# index of the channel to analyse (plot and calc stats), 
+channel_index: 0
+# number of frame to start the analysis. A sufficient number of solution
+# frames before this one is necessary. If 0, considers the first possible frame
+frame_start: 0
+# number of frames that will be estimated, if 0 accounts for all possible
+# cases from the timestesp in the reference folder. Equals the number of
+# recurrencies plus one
+frames_to_estimate: 10 

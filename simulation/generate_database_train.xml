@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<!-- All values are in physical units (not in lattice units). -->
+
+<geometry>
+    <!-- Size of computational domain. --> 
+    <lx> 100.0 </lx> 
+    <ly> 100.0 </ly> 
+</geometry>
+
+<acoustics>
+    <!-- Offset of pulse density. --> 
+    <rho0> 1.0 </rho0>
+    <userDefined>
+        <!-- Number of pulses defined manually. -->
+        <numUserPulses> 0 </numUserPulses>
+        <!-- Location of pulse center. --> 
+        <center> 
+            <x> 50.0 </x> <y> 50.0 </y> 
+        </center>
+        <!-- Amplitude of pulse density with respect to offset. --> 
+        <amplitude> 0.001 </amplitude>
+        <!-- Half-width of acoustic pulse. -->
+        <halfWidth> 6.0 </halfWidth>
+    </userDefined>
+    <randomDefined>
+        <numRandPulses> 1 4 </numRandPulses>
+        <center>
+            <x> 10.0 90.0 </x> <y> 10.0 90.0 </y>
+        </center>
+        <amplitude> 0.001 0.001 </amplitude>
+        <halfWidth> 6.0 6.0 </halfWidth>
+    </randomDefined>
+</acoustics>
+
+<numerics>
+    <!-- Kinematic viscosity. -->
+    <nu> 0.001 </nu>
+    <!-- Reference velocity. -->
+    <inletVelocity> 340.0 </inletVelocity>
+    <!-- Velocity in lattice units (lowering this value lowers the time step proportionally). -->
+    <uLB> 15.0 </uLB>
+    <!-- Grid resolution along the y-axis direction. -->
+    <resolution> 200 </resolution>
+</numerics>
+
+<output>
+    <outputDir> ./training </outputDir>
+    <!-- Maximum simulation time. -->
+    <maxT> 5.55 </maxT>
+    <vtkIter> 1 </vtkIter>
+    <numSim> 400 </numSim>
+</output>
+
