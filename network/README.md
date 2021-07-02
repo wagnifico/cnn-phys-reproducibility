@@ -302,7 +302,7 @@ Script `test.py` contains the testing procedure implementation. It is a auto-reg
     </tr>
     <tr>
       <td><code>file_format</code></td>
-      <td align="center"><code>vtk{:06d}.vti1</code></td>
+      <td align="center"><code>vtk{:06d}.vti</code></td>
       <td>format of the reference simulation files</td>
     </tr>
     <tr>
