@@ -1,7 +1,5 @@
 # Simulation of acoustic Gaussian pulses
 
-Developpers: Antonio Alguacil Cabrerizo and Wagner Gonçalves Pinto
-
 ## Dataset generation
 
 This folder contains a C++ script to generate the 2D acoustic pulses databases.
