@@ -1,7 +1,5 @@
 # Acoustic propagation using deep learning methods
 
-Developpers: Antonio Alguacil Cabrerizo and Wagner Gonçalves Pinto
-
 ## Install dependencies
 
 We recommend using a `conda environment` to install all the project dependencies, listed in the [requirements.txt](requirements.txt) file.
