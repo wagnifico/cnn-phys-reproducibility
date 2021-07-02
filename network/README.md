@@ -43,7 +43,7 @@ This category of params handles the location of the data, as well as the format 
     </tr>
     <tr>
       <td><code>dataPath</code></td>
-      <td align="center"><code>'{:06d}/vtk{:06d}.vt'</code></td>
+      <td align="center"><code>'path/to/datbase'</code></td>
       <td>path to the folder with <b>preprocessed</b> database for training</td>
     </tr>
     <tr>
