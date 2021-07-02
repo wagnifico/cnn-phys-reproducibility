@@ -38,7 +38,7 @@ This category of params handles the location of the data, as well as the format 
     </tr>
     <tr>
       <td><code>dataPathRaw</code></td>
-      <td align="center"><code>'path/to/raw/datbase'</code></td>
+      <td align="center"><code>'path/to/raw/database'</code></td>
       <td>path to the folder with the <b>raw</b> database (simulation data) for training</td>
     </tr>
     <tr>
